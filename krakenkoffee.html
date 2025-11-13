@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kraken Koffee Sales Infographic</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="project-navbar">
+    <div class="project-nav-left">
+      <h1>Kraken Koffee</h1>
+      <p class="nav-subtitle">Sales Infographic</p>
+    </div>
+
+    <button class="burger" id="burger-toggle">☰</button>
+
+    <div class="project-nav-right" id="navbar-links">
+      <a href="#summary">Project Summary</a>
+      <a href="#gallery">Infographic</a>
+      <a href="#dax">DAX Measures</a>
+      <a href="#workflow">Project Workflow</a>
+      <button class="btn btn-yellow" onclick="promptDownload('krakenkoffee')">⬇ Download Project</button>
+      <a href="index.html" class="btn small-btn">← Back</a>
+    </div>
+  </nav>
+  <div class="page-wrapper">
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Description -->
+    <section class="project-description">
+      <p>This one-page infographic visualizes sales performance and trends for Kraken Koffee's Florida locations, combining key statistics with visually engaging insights.</p>
+    </section>
+
+    <!-- Project Summary -->
+    <section class="project-details" id="summary">
+      <h3>Project Summary</h3>
+      <ul>
+        <li><strong>Tools used:</strong> Power BI, DAX, Power Query</li>
+        <li><strong>Data source:</strong> Simulated transaction data from coffee shop sales</li>
+        <li><strong>Pages:</strong> Single-page infographic (Split for display)</li>
+        <li><strong>Main KPIs:</strong> Total Sales, Average Order Size, Best Sellers, Time of Day Revenue, Forecasted Sales</li>
+      </ul>
+      <div class="project-date">
+        <em>Worked on: April 20 – April 22, 2025</em>
+      </div>
+    </section>
+
+    <!-- Infographic Gallery -->
+    <div class="gallery kraken" id="gallery">
+        <div class="image-block">
+          <img src="assets/KrakenKoffee/Page1.png" alt="Infographic Part 1" onclick="openImage(this)">
+        </div>
+        <div class="image-block">
+          <img src="assets/KrakenKoffee/Page2.png" alt="Infographic Part 2" onclick="openImage(this)">
+        </div>
+        <div class="image-block">
+          <img src="assets/KrakenKoffee/Page3.png" alt="Infographic Part 3" onclick="openImage(this)">
+        </div>
+        <div class="image-block">
+          <img src="assets/KrakenKoffee/Page4.png" alt="Infographic Part 4" onclick="openImage(this)">
+        </div>
+      </div>
+      
+
+    <!-- Lightbox for Zoom -->
+    <div id="lightbox" class="lightbox" onclick="closeImage()">
+      <button class="lightbox-btn prev" onclick="event.stopPropagation(); showPrevImage();">←</button>
+      <img id="lightbox-img" src="" alt="Full image" />
+      <button class="lightbox-btn next" onclick="event.stopPropagation(); showNextImage();">→</button>
+    </div>
+
+    <!-- DAX Section -->
+    <section class="dax-section" id="dax">
+        <h3>Some DAX Measures</h3>
+
+        <div class="dax-measure">
+            <h4>Most Popular Seller</h4>
+            <pre><code>Most Popular Seller = CALCULATE(min(Product_Dim[product_detail]), filter(Product_Dim,
+                [Product Transactions Rank]=1))</code></pre>
+        </div>
+
+        <div class="dax-measure">
+          <h4>Product Sales Rank</h4>
+          <pre><code>Product Sales Rank = RANKX(ALLSELECTED(Product_Dim), [Total Sales],, DESC, Dense)</code></pre>
+        </div>
+
+        <div class="dax-measure">
+            <h4>Max Average Order Size Marker</h4>
+            <pre><code>Max AOS Marker = SWITCH(TRUE(), [Average Order Size] = [MAx Avg Order Size (Hour)],
+                 [Average Order Size],BLANK())</code></pre>
+          </div>
+
+        <div class="dax-measure">
+        <h4>Product Category Rank</h4>
+        <pre><code>Product Category Rank = CALCULATE(RANKX(ALL(Product_Dim[product_type]), [Total Sales],,DESC, Dense),
+             ALL(Product_Dim[product_category]))</code></pre>
+        </div>
+
+        <div class="dax-measure">
+            <h4>Bar Chart Label</h4>
+            <pre><code>Bar Chart Label (Product Category) = Format([Total Sales]/1000,"$###, ##0k") & " 
+                (" & FORMAT([% of Sales], "###, ##0.0%") & ")"</code></pre>
+            </div>
+
+        <div class="dax-measure">
+            <h4>Forecast</h4>
+            <pre><code>Forecast = CALCULATE(SUMX(VALUES('Forecast Date Table'[Date]), [Average Daily Sales Switch]), 
+                FILTER(ALLSELECTED('Forecast Date Table'[Date]), 'Forecast Date Table'[Date]
+                 <= MAX('Forecast Date Table'[Date])))</code></pre>
+        </div>
+      
+        <p class="dax-note">These measures leverage DAX techniques including <em>CALCULATE</em>, <em>FILTER</em> and <em>RANKX</em> to generate dynamic and actionable insights.</p>
+      </section>
+      
+
+    <!-- Workflow -->
+    <section class="project-steps" id="workflow">
+      <h3>Project Workflow</h3>
+      <p class="section-subtitle">Inspired by Google Data Analytics methodology</p>
+      <div class="steps-grid">
+        <div class="step">
+          <h4>🟢 Ask</h4>
+          <p>The goal was to create an easy-to-read infographic summarizing sales data, product performance, and sales patterns for Kraken Koffee's Florida stores.</p>
+        </div>
+        <div class="step">
+          <h4>🧹 Prepare</h4>
+          <p>Sales data was cleaned and filtered using Power Query, ensuring consistency and accuracy in transactions and product details.</p>
+        </div>
+        <div class="step">
+          <h4>🔧 Process</h4>
+          <p>Key metrics and measures were developed using DAX, focusing on dynamic calculations for forecasting and best seller analysis.</p>
+        </div>
+        <div class="step">
+          <h4>📊 Analyze</h4>
+          <p>Trends in order size, time of day sales, and top products were identified to provide actionable business insights.</p>
+        </div>
+        <div class="step">
+          <h4>📤 Share</h4>
+          <p>The infographic was designed to be visually appealing and informative, allowing stakeholders to quickly grasp key performance metrics.</p>
+        </div>
+        <div class="step">
+          <h4>🧠 Act</h4>
+          <p>Insights can help optimize store hours, focus marketing on top products, and adjust goals based on forecasted trends.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <a href="index.html" class="btn">← Back to Portfolio</a>
+      <button class="btn btn-yellow" onclick="promptDownload('krakenkoffee')">⬇ Download Project</button>
+    </div>
+
+  </div>
+</div>
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Cenusa Bogdan — All rights reserved.
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

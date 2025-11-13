@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Romanian Presidential Elections Analysis</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="project-navbar">
+    <div class="project-nav-left">
+      <h1>Presidential Elections</h1>
+      <p class="nav-subtitle"> First Round Insights</p>
+    </div>
+
+    <button class="burger" id="burger-toggle">☰</button>
+
+    <div class="project-nav-right" id="navbar-links">
+      <a href="#summary">Project Summary</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#dax">DAX Measures</a>
+      <a href="#workflow">Project Workflow</a>
+      <button class="btn btn-yellow" onclick="promptDownload('presidential')">⬇ Download Project</button>
+      <a href="index.html" class="btn small-btn">← Back</a>
+    </div>
+  </nav>
+  <div class="page-wrapper">
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Description -->
+    <section class="project-description">
+      <p>This interactive data report offers a three-page visualization of Romania's first-round presidential election results, showcasing candidates, votes distribution, and regional insights through engaging and dynamic dashboards.</p>
+    </section>
+
+    <!-- Project Summary -->
+    <section class="project-details" id="summary">
+        <h3>Project Summary</h3>
+        <ul>
+        <li><strong>Tools used:</strong> Power BI, DAX, Power Query</li>
+          <li style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong>Data source:</strong> prezenta.roaep.ro
+            </div>
+            <div class="data-source-buttons">
+              <a href="https://prezenta.roaep.ro/prezidentiale04052025/pv/romania/results/" target="_blank" class="btn small-btn">Go to Source</a>
+              <a href="assets/Presidential/datasource.csv" download class="btn btn-yellow small-btn">Download CSV</a>
+            </div>
+          </li>
+          <li><strong>Pages:</strong> Overview, Candidates, Romania vs Abroad</li>
+          <li><strong>Main KPIs:</strong> Total Votes, Total Candidates, Total Precincts, Average Votes per Precinct, Average Report Hour</li>
+        </ul>
+        <div class="project-date">
+          <em>Worked on: May 10, 2025</em>
+        </div>
+      </section>
+      
+
+    <!-- Infographic Gallery -->
+    <div class="gallery" id="gallery">
+        <div class="image-block">
+          <img src="assets/Presidential/presidential1.png" alt="Infographic Part 1" onclick="openImage(this)">
+        </div>
+        <div class="image-block">
+          <img src="assets/Presidential/presidential2.png" alt="Infographic Part 2" onclick="openImage(this)">
+        </div>
+        <div class="image-block">
+          <img src="assets/Presidential/presidential3.png" alt="Infographic Part 3" onclick="openImage(this)">
+        </div>
+        <div class="image-block">
+            <img src="assets/Presidential/star_schema.png" alt="Infographic Part 3" onclick="openImage(this)">
+        </div>
+        <div class="image-block">
+            <img src="assets/Presidential/tables.png" alt="Infographic Part 3" onclick="openImage(this)">
+        </div>
+      </div>
+      
+
+    <!-- Lightbox for Zoom -->
+    <div id="lightbox" class="lightbox" onclick="closeImage()">
+      <button class="lightbox-btn prev" onclick="event.stopPropagation(); showPrevImage();">←</button>
+      <img id="lightbox-img" src="" alt="Full image" />
+      <button class="lightbox-btn next" onclick="event.stopPropagation(); showNextImage();">→</button>
+    </div>
+
+    <!-- DAX Section -->
+    <section class="dax-section" id="dax">
+        <h3>Some DAX Measures</h3>
+
+        <div class="dax-measure">
+            <h4>Total Votes</h4>
+            <pre><code>Total Votes = SUM(Votes[Votes])</code></pre>
+        </div>
+
+        <div class="dax-measure">
+          <h4>Total Candidates</h4>
+          <pre><code>Total Candidates = COUNT(Candidates[Candidate_id])</code></pre>
+        </div>
+
+        <div class="dax-measure">
+            <h4>Total Votes per County</h4>
+            <pre><code>Total Votes per County = CALCULATE([Total Votes], ALLEXCEPT(Votes, County[County_id]))</code></pre>
+          </div>
+
+        <div class="dax-measure">
+        <h4>Total Votes per Candidate</h4>
+        <pre><code>Total Votes per Candidate = CALCULATE([Total Votes], ALLEXCEPT(Votes, Candidates[Candidate_id]))</code></pre>
+        </div>
+
+        <div class="dax-measure">
+            <h4>Average Report Hour of Votes</h4>
+            <pre><code>Average Report Hour of Votes = AVERAGE(Votes[Submission Hour])</code></pre>
+            </div>
+
+        <div class="dax-measure">
+            <h4>Candidate Rank</h4>
+            <pre><code>Candidate Rank = RANKX(ALL(Candidates[Candidate_id]), [Total Votes],, DESC, Dense)</code></pre>
+            </div>
+    
+        <p class="dax-note">These measures leverage DAX techniques including <em>CALCULATE</em>, <em>FILTER</em> and <em>RANKX</em> to generate dynamic and actionable insights.</p>
+      </section>
+      
+
+    <!-- Workflow -->
+    <section class="project-steps" id="workflow">
+        <h3>Project Workflow</h3>
+        <p class="section-subtitle">Inspired by Google Data Analytics methodology</p>
+        <div class="steps-grid">
+          <div class="step">
+            <h4>🟢 Ask</h4>
+            <p>The goal was to build a comprehensive data model and analysis of Romania's first-round presidential elections, transforming raw voting data into clear, actionable insights.</p>
+          </div>
+          <div class="step">
+            <h4>🧹 Prepare</h4>
+            <p>Starting from a single CSV file, I cleaned the data, removed redundancies, and structured it into FACT and DIMENSION tables to enable a star schema design.</p>
+          </div>
+          <div class="step">
+            <h4>🔧 Process</h4>
+            <p>Key metrics and measures were created using DAX, ensuring dynamic calculations for total votes, candidate rankings, and dominant regions per candidate.</p>
+          </div>
+          <div class="step">
+            <h4>📊 Analyze</h4>
+            <p>Vote distribution was explored across counties, identifying voting patterns and top-performing candidates at different geographic levels.</p>
+          </div>
+          <div class="step">
+            <h4>📤 Share</h4>
+            <p>The insights were presented across three interactive report pages, combining KPIs, comparative visuals, and drill-down exploration for stakeholders.</p>
+          </div>
+          <div class="step">
+            <h4>🧠 Act</h4>
+            <p>These findings provide an accessible way to understand voting trends, supporting deeper analysis of voter behavior and regional dynamics.</p>
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <a href="index.html" class="btn">← Back to Portfolio</a>
+      <button class="btn btn-yellow" onclick="promptDownload('presidential')">⬇ Download Project</button>
+    </div>
+
+  </div>
+</div>
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Cenusa Bogdan — All rights reserved.
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

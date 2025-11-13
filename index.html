@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio - Bogdan Cenusa</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+
+</head>
+<body>
+      <nav class="project-navbar">
+      <div class="project-nav-left">
+        <h1>My Power BI Portfolio</h1>
+        <p class="nav-subtitle">Data speaks louder than words.</p>
+      </div>
+    
+      <button class="burger" id="burger-toggle">☰</button>
+    
+      <div class="project-nav-right" id="navbar-links">
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="https://www.linkedin.com/in/bogdancenusa19/"  target="_blank" class="linkedin-link">LinkedIn</a>
+
+      </div>
+    </nav>
+    <div class="page-wrapper">
+     <!-- Section 1: About Me -->
+    <section class="about-me-section" id="about">
+      <div class="about-grid">
+    
+        <div class="certificate cert-left">
+          <img src="assets/Certificates/certGDA.png" alt="Certificate 1" onclick="openImage(this)">
+          <p>Google Data Analytics</p>
+        </div>
+    
+        <div class="about-center">
+          <img src="assets/me.jpg" alt="My Photo" class="profile-pic">
+          <p class="about-text">
+            I'm an aspiring Data Analyst with a background in software development and a growing interest in data visualization and analytics.
+          </p>
+        </div>
+    
+        <div class="certificate cert-right">
+          <img src="assets/Certificates/certDB.png" alt="Certificate 2"  onclick="openImage(this)">
+          <p>Data Analysis with Databricks</p>
+        </div>
+
+        <!-- 🔍 Lightbox container -->
+        <div id="lightbox" class="lightbox" onclick="closeImage()">
+          <img id="lightbox-img" src="" alt="Full image" />
+        </div>
+
+      </div>
+    </section>
+    
+   <!-- Section 2: Projects -->
+<section class="carousel-section" id="projects">
+  <div class="carousel">
+
+<!-- Project 4 -->
+    <div class="carousel-item flip-card">
+      <div class="flip-card-inner">
+
+        <!-- Front (Imaginea) -->
+        <div class="flip-card-front">
+          <img src="assets/Presidential/presidential.png" alt="Data Exploration - Colege Major">
+        </div>
+
+        <!-- Back (Descriere) -->
+        <div class="flip-card-back">
+          <p>Finding Insights based on starting salaries and mid-career salaries of undergraduate majors</p>
+        </div>
+
+      </div>
+
+      <h3>Exploratory Data Analysis <br>College Majors</h3>
+      <a href="college_eda.html" class="btn">View Project</a>
+      <div class="tech-label-group">
+        <div class="tech-label">Power BI</div>
+        <div class="tech-label">Power Query</div>
+        <div class="tech-label">DAX</div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="carousel-item flip-card">
+      <div class="flip-card-inner">
+
+        <!-- Front (Imaginea) -->
+        <div class="flip-card-front">
+          <img src="assets/Presidential/presidential.png" alt="MarketMindz Dashboard Preview">
+        </div>
+
+        <!-- Back (Descriere) -->
+        <div class="flip-card-back">
+          <p>Romanian Presidential Elections: First Round - Analysis and Insights</p>
+        </div>
+
+      </div>
+
+      <h3>Romanian <br> Presidential Elections</h3>
+      <a href="presidential.html" class="btn">View Project</a>
+      <div class="tech-label-group">
+        <div class="tech-label">Power BI</div>
+        <div class="tech-label">Power Query</div>
+        <div class="tech-label">DAX</div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="carousel-item flip-card">
+      <div class="flip-card-inner">
+
+        <!-- Front (Imaginea) -->
+        <div class="flip-card-front">
+          <img src="assets/KrakenKoffee/krakenkoffeebg.png" alt="KrakenKoffee Sales Infographic">
+        </div>
+
+        <!-- Back (Descriere) -->
+        <div class="flip-card-back">
+          <p>Sales performance and trends for Kraken Koffee's Florida locations, combining key statistics with visually engaging insights.</p>
+        </div>
+
+      </div>
+
+      <h3>KrakenKoffee <br> Infographic</h3>
+      <a href="krakenkoffee.html" class="btn">View Project</a>
+      <div class="tech-label-group">
+        <div class="tech-label">Power BI</div>
+        <div class="tech-label">DAX</div>
+      </div>
+    </div>
+    
+
+    <!-- Project 1 -->
+    <div class="carousel-item flip-card">
+      <div class="flip-card-inner">
+
+        <!-- Front (Imaginea) -->
+        <div class="flip-card-front">
+          <img src="assets/MarketMindz/marketzmindzbg.png" alt="MarketMindz Dashboard Preview">
+        </div>
+
+        <!-- Back (Descriere) -->
+        <div class="flip-card-back">
+          <p>Sales and marketing insights for a fictional retail client.</p>
+        </div>
+
+      </div>
+
+      <h3>MarketMindz <br> Market Research</h3>
+      <a href="marketmindz.html" class="btn">View Project</a>
+      <div class="tech-label-group">
+        <div class="tech-label">Power BI</div>
+        <div class="tech-label">Data Cleaning</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Section 3: Experience -->
+    <section class="experience-section" id="experience">
+      <h2>Professional Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item left">
+          <div class="content">
+            <div class="experience-title">
+              <h4>Now</h4>
+              <p class="role">Looking for a Data Analyst role</p>
+              <hr>
+            </div>
+            <div class="experience-description">
+              <p>
+              I am currently looking for a job in this field. I am constantly learning, working on projects, and trying to improve day by day.
+              </p>
+            </div>
+          </div>
+        </div>    
+
+        <div class="timeline-item right">
+          <div class="content">
+            <div class="experience-title">
+              <h4>2023 - Present</h4>
+              <p class="role">AR/VR Software Developer</p>
+              <hr>
+            </div>
+            <div class="experience-description">
+              <p>
+                I developed a series of immersive projects using Unity and Unreal Engine, including an interactive quiz game, a VR driving simulator for training and recovery, and a realistic marketing experience with haptic feedback. Additionally, I worked on a physics-based project connected via UDP to a custom simulator, and a HoloLens application for visualizing complex hardware with eye-tracking-based tooltips and outlines.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="content">
+            <div class="experience-title">
+              <h4>2022 - 2023</h4>
+              <p class="role">Information Technology Administrator</p>
+              <hr>
+            </div>
+            <div class="experience-description">
+              <p>
+              • Managed laptops, tablets, phones for employees, ensuring seamless IT support.<br>
+              • Troubleshot technical issues and provided timely solutions, enhancing productivity across departments.<br>
+              • Prepared necessary hardware for various departments and serviced printers to maintain operational efficiency.
+              </p>
+            </div>
+          </div>
+        </div>    
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2025 Bogdan Cenusa — All rights reserved.
+    </footer>
+
+  </div>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

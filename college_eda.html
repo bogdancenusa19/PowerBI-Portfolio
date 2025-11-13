@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>College Salary EDA</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="project-navbar">
+    <div class="project-nav-left">
+      <h1>College Salary EDA</h1>
+      <p class="nav-subtitle">Exploratory Data Analysis</p>
+    </div>
+
+    <button class="burger" id="burger-toggle">☰</button>
+
+    <div class="project-nav-right" id="navbar-links">
+      <a href="#summary">Project Summary</a>
+      <a href="#gallery">Visuals</a>
+      <a href="#workflow">Project Workflow</a>
+      <button class="btn btn-yellow" onclick="promptDownload('college_eda')">Preview Project</button>
+      <a href="index.html" class="btn small-btn">← Back</a>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="container">
+
+      <!-- Description -->
+      <section class="project-description">
+        <p>This exploratory data analysis investigates salary trends based on college majors, uncovering disparities between percentiles and industries.</p>
+      </section>
+
+      <!-- Project Summary -->
+      <section class="project-details" id="summary">
+        <h3>Project Summary</h3>
+        <ul>
+          <li><strong>Tools used:</strong> Python, Pandas, Matplotlib, Seaborn</li>
+          <li><strong>Dataset:</strong> Cleaned dataset on college majors and salary percentiles</li>
+          <li><strong>Focus:</strong> Salary distributions, industry comparison, spread analysis</li>
+        </ul>
+        <div class="project-date">
+          <em>Worked on: July 5 – July 6, 2025</em>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <div class="gallery" id="gallery">
+        <div class="image-block">
+          <img src="assets/CollegeEDA/fig1.png" alt="Salary distribution by major" onclick="openImage(this)">
+          <p class="image-caption">Salary Distribution by Major</p>
+        </div>
+        <div class="image-block">
+          <img src="assets/CollegeEDA/fig2.png" alt="10th vs 90th Percentile Spread" onclick="openImage(this)">
+          <p class="image-caption">10th vs 90th Percentile Spread</p>
+        </div>
+        <div class="image-block">
+          <img src="assets/CollegeEDA/fig3.png" alt="Top Earning Majors" onclick="openImage(this)">
+          <p class="image-caption">Top Earning Majors</p>
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div id="lightbox" class="lightbox" onclick="closeImage()">
+        <button class="lightbox-btn prev" onclick="event.stopPropagation(); showPrevImage();">←</button>
+        <img id="lightbox-img" src="" alt="Full image" />
+        <button class="lightbox-btn next" onclick="event.stopPropagation(); showNextImage();">→</button>
+      </div>
+
+    
+      <!-- Download and Back -->
+      <div class="button-group">
+        <a href="index.html" class="btn">← Back to Portfolio</a>
+        <button class="btn btn-yellow" onclick="promptDownload('college_eda')">Preview Project</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Cenusa Bogdan — All rights reserved.
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

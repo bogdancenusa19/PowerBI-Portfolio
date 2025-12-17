@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Netflix Movies Analysis</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+</head>
+
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Back to portfolio home">
+        <div class="brand__title">Netflix Movies</div>
+        <div class="brand__subtitle">Python EDA</div>
+      </a>
+
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav__links" id="navLinks">
+        <a class="btn btn--ghost" href="index.html">Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#charts">Charts</a>
+        <a class="btn btn--ghost" href="Projects/netflix_analysis.zip" download>Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+    <div class="container">
+
+      <!-- OVERVIEW -->
+      <section class="project-details" id="overview">
+        <h3>🎬 Netflix Movies Analysis</h3>
+        <p class="muted" style="margin: 10px 0 0; line-height: 1.7;">
+          This project explores the <strong>Netflix Movies dataset</strong> to uncover insights about movie trends, genres, and durations.
+          The analysis was performed in <strong>Python</strong> using <strong>pandas</strong> and <strong>matplotlib</strong>, and follows best practices in data analysis.
+        </p>
+      </section>
+
+      <!-- GOALS -->
+      <section class="project-steps">
+        <h3>📊 Project Goals</h3>
+        <ol class="list" style="padding-left: 18px; margin: 0; line-height: 1.75;">
+          <li>Perform exploratory data analysis (EDA) on Netflix movies.</li>
+          <li>
+            Answer key questions, such as:
+            <ul class="list" style="margin-top: 8px;">
+              <li>What was the most frequent movie duration in the 1990s?</li>
+              <li>How many short action movies (&lt; 90 minutes) were released in the 1990s?</li>
+            </ul>
+          </li>
+          <li>Visualize movie trends across years and genres.</li>
+        </ol>
+      </section>
+
+      <!-- STRUCTURE -->
+      <section class="project-steps">
+        <h3>📂 Project Structure</h3>
+        <pre style="margin: 0; padding: 12px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); overflow-x:auto;">
+<code>netflix-analysis/
+├─ data/
+│ └─ raw/netflix_data.csv
+├─ notebooks/
+│ └─ analysis.ipynb
+├─ charts/
+│ ├─ top_10_movie_genres.png
+│ ├─ movies_released_per_year.png
+│ └─ movie_distribution_by_duration.png
+├─ README.md
+└─ requirements.txt</code></pre>
+      </section>
+
+      <!-- TECH -->
+      <section class="project-steps">
+        <h3>🛠️ Technologies Used</h3>
+        <ul class="list">
+          <li>Python 3.11</li>
+          <li>Pandas</li>
+          <li>Matplotlib</li>
+        </ul>
+      </section>
+
+      <!-- INSIGHTS + CHARTS -->
+      <section class="project-steps" id="charts">
+        <h3>📈 Key Insights</h3>
+        <p class="section-subtitle">Click any chart to preview. Use Arrow keys in preview.</p>
+
+        <!-- Insight 1 -->
+        <div class="dax-measure" style="margin-top: 14px;">
+          <h4 style="margin: 0 0 10px;">1) Movie Duration in the 1990s</h4>
+          <ul class="list" style="margin: 0 0 12px;">
+            <li>The most frequent movie duration was <strong>94 minutes</strong>.</li>
+            <li>Number of short action movies (&lt; 90 minutes): <strong>7 movies</strong>.</li>
+          </ul>
+
+          <button class="image-block js-preview" data-group="netflix-charts"
+            data-img="assets/Netflix/movie_distribution_by_duration.png"
+            data-title="Movie distribution by duration"
+            data-desc="Distribution of movie durations used to support the 1990s duration insight.">
+            <img src="assets/Netflix/movie_distribution_by_duration.png" alt="Movie distribution by duration"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+        </div>
+
+        <!-- Insight 2 -->
+        <div class="dax-measure">
+          <h4 style="margin: 0 0 10px;">2) Top 10 Genres</h4>
+          <p class="muted" style="margin: 0 0 12px; line-height: 1.7;">
+            Drama and Comedy dominate Netflix’s catalog.
+          </p>
+
+          <button class="image-block js-preview" data-group="netflix-charts"
+            data-img="assets/Netflix/top_10_movie_genres.png"
+            data-title="Top 10 movie genres"
+            data-desc="Top genres by count. Highlights catalog composition.">
+            <img src="assets/Netflix/top_10_movie_genres.png" alt="Top 10 movie genres"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+        </div>
+
+        <!-- Insight 3 -->
+        <div class="dax-measure">
+          <h4 style="margin: 0 0 10px;">3) Movie Releases per Year</h4>
+          <ul class="list" style="margin: 0 0 12px;">
+            <li>The number of movies released grew exponentially after the 2000s.</li>
+            <li>2019 marks the peak, followed by a sharp decline in 2020-2021.</li>
+            <li>This drop is likely due to incomplete data for recent years and the impact of the COVID-19 pandemic on movie production.</li>
+          </ul>
+
+          <button class="image-block js-preview" data-group="netflix-charts"
+            data-img="assets/Netflix/movies_released_per_year.png"
+            data-title="Movies released per year"
+            data-desc="Yearly trend. Peak in 2019 and decline afterwards, likely influenced by data completeness and COVID-era disruption.">
+            <img src="assets/Netflix/movies_released_per_year.png" alt="Movies released per year"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+        </div>
+
+      </section>
+
+      <!-- Modal (needed for previews on this page too) -->
+      <div class="modal" id="modal" aria-hidden="true">
+        <div class="modal__backdrop" data-close></div>
+        <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Preview">
+          <button class="modal__close" data-close aria-label="Close">✕</button>
+          <img class="modal__img" id="modalImg" alt="">
+          <div class="modal__body">
+            <h3 id="modalTitle"></h3>
+            <p class="muted" id="modalDesc"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© 2025 Bogdan Cenusa - All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

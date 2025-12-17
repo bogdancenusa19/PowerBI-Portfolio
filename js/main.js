@@ -1,148 +1,178 @@
-// Lightbox gallery
-const galleryImages = Array.from(document.querySelectorAll('.gallery .image-block img'));
-let currentIndex = 0;
+// JS comments must be in English only
 
-function openImage(img) {
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  currentIndex = galleryImages.indexOf(img);
-  lightboxImg.src = img.src;
-  lightbox.style.display = 'flex';
-}
-
-function closeImage() {
-  document.getElementById('lightbox').style.display = 'none';
-}
-
-function showNextImage() {
-  currentIndex = (currentIndex + 1) % galleryImages.length;
-  document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
-}
-
-function showPrevImage() {
-  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-  document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
-}
-
-document.addEventListener('keydown', function (event) {
-  const lightbox = document.getElementById('lightbox');
-  if (lightbox.style.display === 'flex') {
-    if (event.key === 'ArrowRight') {
-      showNextImage();
-    } else if (event.key === 'ArrowLeft') {
-      showPrevImage();
-    } else if (event.key === 'Escape') {
-      closeImage();
-    }
-  }
-});
-
-// Countdown timers for upcoming projects
-function updateCountdowns() {
-  const countdowns = document.querySelectorAll('.countdown-timer');
-  const now = new Date().getTime();
-
-  countdowns.forEach(el => {
-    const deadline = new Date(el.dataset.deadline).getTime();
-    const distance = deadline - now;
-
-    if (distance <= 0) {
-      el.textContent = "Opens soon!";
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((distance / (1000 * 60)) % 60);
-
-    el.textContent = `Opens in: ${days}d ${hours}h ${minutes}m`;
-  });
-}
-
-setInterval(updateCountdowns, 60000);
-updateCountdowns();
-
-// Navbar scroll transparency
-window.addEventListener('scroll', () => {
-  const navbar = document.querySelector('.project-navbar');
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
-
-// Burger toggle menu
 document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.getElementById("burger-toggle");
-  const nav = document.getElementById("navbar-links");
+  /* =========================
+     Navbar burger (supports both layouts)
+     - index.html uses: #burger + #navLinks
+     - project pages may use: #burger-toggle + #navbar-links
+  ========================== */
+  const burger =
+    document.getElementById("burger") ||
+    document.getElementById("burger-toggle");
 
-  if (toggle && nav) {
-    toggle.addEventListener("click", () => {
-      nav.classList.toggle("show");
+  const navLinks =
+    document.getElementById("navLinks") ||
+    document.getElementById("navbar-links");
+
+  if (burger && navLinks) {
+    burger.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("is-open");
+      burger.setAttribute("aria-expanded", String(isOpen));
     });
 
-    const links = nav.querySelectorAll("a");
-    links.forEach(link => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth <= 768) {
-          nav.classList.remove("show");
-        }
+    navLinks.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        navLinks.classList.remove("is-open");
+        burger.setAttribute("aria-expanded", "false");
       });
     });
   }
-});
 
-const projects = {
-  marketmindz: {
-    map: [7,19,19,15,18,62,63,63,3,17,8,21,4,66,6,14,14,6,11,4,66,2,14,12,63,5,8,11,4,63,3,63,53,15,68,45,56,61,29,47,39,43,61,10,31,67,33,30,10,5,14,50,20,5,40,56,40,9,22,61,35,28,46,35,34,63,21,8,4,22,64,20,18,15,65,18,7,0,17,8,13,6],
-    key: [77, 106, 65, 119, 77, 103, 61, 61]
-  },
-  krakenkoffee: {
-    map: [7,19,19,15,18,62,63,63,3,17,8,21,4,66,6,14,14,6,11,4,66,2,14,12,63,3,17,8,21,4,63,5,14,11,3,4,17,18,63,53,41,44,21,26,59,15,14,67,55,7,46,52,21,52,39,23,58,39,29,39,5,9,44,61,7,48,37,3,35,59,50,8,64,20,18,15,65,3,17,8,21,4,68,11,8,13,10],
-    key: [77, 106, 65, 119, 77, 103, 61, 61]
-  },
-  presidential: {
-    map: [7,19,19,15,18,62,63,63,3,17,8,21,4,66,6,14,14,6,11,4,66,2,14,12,63,3,17,8,21,4,63,5,14,11,3,4,17,18,63,53,15,20,42,6,48,46,18,7,5,12,19,16,56,5,61,17,67,51,34,33,59,19,45,68,44,60,12,4,9,31,15,5,64,20,18,15,65,18,7,0,17,8,13,6],
-    key: [77, 106, 65, 119, 77, 103, 61, 61]
-  },
-  hr: {
-    map: [/* MAP */],
-    key: [77, 106, 65, 119, 77, 103, 61, 61]
-  },
-  winemag: {
-    map: [/* MAP */],
-    key: [77, 106, 65, 119, 77, 103, 61, 61]
+  /* =========================
+     Modal preview (images)
+     Works for:
+     - .cert (certificates)
+     - .js-preview (project previews)
+     - any element with [data-preview="true"]
+  ========================== */
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDesc = document.getElementById("modalDesc");
+  const modalPrev = document.getElementById("modalPrev");
+  const modalNext = document.getElementById("modalNext");
+
+  let activeGroup = [];
+  let activeIndex = -1;
+
+  const setModalNavVisibility = () => {
+    const showNav = activeGroup.length > 1;
+    if (modalPrev) modalPrev.style.display = showNav ? "" : "none";
+    if (modalNext) modalNext.style.display = showNav ? "" : "none";
+  };
+
+  const openModalAt = (index) => {
+    if (!modal || !modalImg) return;
+    if (!activeGroup.length) return;
+
+    activeIndex = Math.max(0, Math.min(index, activeGroup.length - 1));
+    const el = activeGroup[activeIndex];
+
+    const img = el.dataset.img || "";
+    const title = el.dataset.title || "";
+    const desc = el.dataset.desc || "";
+
+    modalImg.src = img;
+    modalImg.alt = title || "Preview";
+
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalDesc) modalDesc.textContent = desc;
+
+    // Hide bottom info bar if empty
+    const body = modal.querySelector(".modal__body");
+    const hasInfo = Boolean((title && title.trim()) || (desc && desc.trim()));
+    if (body) body.classList.toggle("is-hidden", !hasInfo);
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    setModalNavVisibility();
+  };
+
+  const closeModal = () => {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    activeGroup = [];
+    activeIndex = -1;
+  };
+
+  const nextModal = () => {
+    if (activeGroup.length <= 1) return;
+    openModalAt((activeIndex + 1) % activeGroup.length);
+  };
+
+  const prevModal = () => {
+    if (activeGroup.length <= 1) return;
+    openModalAt((activeIndex - 1 + activeGroup.length) % activeGroup.length);
+  };
+
+  // Close handlers
+  document.querySelectorAll("[data-close]").forEach((el) => {
+    el.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (!modal || !modal.classList.contains("is-open")) return;
+
+    if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowRight") nextModal();
+    if (e.key === "ArrowLeft") prevModal();
+  });
+
+  if (modalNext) modalNext.addEventListener("click", nextModal);
+  if (modalPrev) modalPrev.addEventListener("click", prevModal);
+
+  // Optional: click image to open in a new tab
+  if (modalImg) {
+    modalImg.style.cursor = "zoom-in";
+    modalImg.addEventListener("click", () => {
+      if (!modalImg.src) return;
+      window.open(modalImg.src, "_blank", "noopener,noreferrer");
+    });
   }
-};
 
-const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:/?=.-_";
+  /* =========================
+     Bind modal to previews
+  ========================== */
 
-function promptDownload(projectName) {
-  const project = projects[projectName];
-  if (!project) return alert("Project not found.");
 
-  const z = prompt("You will be redirected to Google Drive.\nTo download the project, click the top-right download icon on the page.\n\nEnter access key to unlock the report:");
-  if (!z) return;
+  // Project preview buttons (.js-preview)
+  const previewButtons = Array.from(document.querySelectorAll(".js-preview"));
+  previewButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const groupName = btn.dataset.group || "__single__";
+      activeGroup = previewButtons.filter(
+        (x) => (x.dataset.group || "__single__") === groupName
+      );
+      openModalAt(activeGroup.indexOf(btn));
+    });
+  });
 
-  const input = btoa(z.trim());
-  const pass = String.fromCharCode(...project.key);
-  const link = project.map.map(i => chars[i]).join("");
+  // Generic preview elements (optional)
+  const genericPreviews = Array.from(document.querySelectorAll('[data-preview="true"]'));
+  genericPreviews.forEach((el) => {
+    el.addEventListener("click", () => {
+      const groupName = el.dataset.group || "__single__";
+      activeGroup = genericPreviews.filter(
+        (x) => (x.dataset.group || "__single__") === groupName
+      );
+      openModalAt(activeGroup.indexOf(el));
+    });
+  });
 
-  if (input === pass) {
-    window.location.href = link;
-  } else {
-    alert("Incorrect password.");
-  }
-}
-document.addEventListener('DOMContentLoaded', () => {
-  const navLeft = document.querySelector('.project-nav-left');
-  if (navLeft) {
-    navLeft.style.cursor = 'pointer';
-    navLeft.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+  /* =========================
+     Filters (index only)
+  ========================== */
+  const filters = document.querySelectorAll(".filter");
+  const projects = document.querySelectorAll(".project");
+
+  const applyFilter = (tag) => {
+    projects.forEach((p) => {
+      const tags = (p.dataset.tags || "").split(" ");
+      const show = tag === "all" ? true : tags.includes(tag);
+      p.style.display = show ? "" : "none";
+    });
+  };
+
+  if (filters.length && projects.length) {
+    filters.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filters.forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        applyFilter(btn.dataset.filter);
       });
     });
   }

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NYC Public School SAT Results</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+</head>
+
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Back to portfolio home">
+        <div class="brand__title">NYC Schools</div>
+        <div class="brand__subtitle">SAT Analysis - Python</div>
+      </a>
+
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav__links" id="navLinks">
+        <a class="btn btn--ghost" href="index.html">Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#insights">Insights</a>
+        <a class="btn btn--ghost" href="Projects/nyc_schools_analysis.zip" download>Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+    <div class="container">
+
+      <!-- OVERVIEW -->
+      <section class="project-details" id="overview">
+        <h3>🏫 NYC Public School SAT Results - Data Analysis with Python</h3>
+        <p class="muted" style="margin: 10px 0 0; line-height: 1.7;">
+          This project explores <strong>New York City Public School SAT Results</strong> to identify top-performing schools and borough-level performance variation using Python (pandas, matplotlib, numpy).
+        </p>
+      </section>
+
+      <!-- OBJECTIVES -->
+      <section class="project-steps">
+        <h3>🎯 Project Objectives</h3>
+        <ol class="list" style="padding-left: 18px; margin: 0; line-height: 1.75;">
+          <li>Identify top math-performing schools - schools with an average math score ≥ 80% of the maximum (≥ 640/800).</li>
+          <li>Find the top 10 overall schools - based on total SAT scores (Math + Reading + Writing).</li>
+          <li>Analyze borough-level variation - find which borough has the largest SAT score standard deviation.</li>
+        </ol>
+      </section>
+
+      <!-- DATASET -->
+      <section class="project-steps">
+        <h3>📊 Dataset</h3>
+        <ul class="list">
+          <li><strong>File:</strong> data/raw/schools.csv</li>
+          <li><strong>Source:</strong> NYC Open Data (public dataset)</li>
+          <li><strong>Columns used:</strong> school_name, average_math, average_reading, average_writing, borough</li>
+        </ul>
+      </section>
+
+      <!-- INSIGHTS -->
+      <section class="project-steps" id="insights">
+        <h3>📈 Key Insights</h3>
+        <p class="section-subtitle">Readable summary + one chart preview.</p>
+
+        <div class="dax-measure" style="margin-top: 14px;">
+          <h4 style="margin: 0 0 10px;">🧮 Best Math Schools (≥ 640 average)</h4>
+          <p class="muted" style="margin: 0 0 10px; line-height: 1.7;">
+            These schools consistently exceed 85% of the maximum possible SAT math score.
+          </p>
+          <ul class="list" style="margin: 0;">
+            <li>Stuyvesant High School - 754</li>
+            <li>Bronx High School of Science - 714</li>
+            <li>Staten Island Technical High School - 711</li>
+            <li>Queens HS for the Sciences at York College - 701</li>
+          </ul>
+        </div>
+
+        <div class="dax-measure">
+          <h4 style="margin: 0 0 10px;">🏆 Top 10 Schools by Total SAT</h4>
+          <p class="muted" style="margin: 0 0 12px; line-height: 1.7;">
+            Stuyvesant High School leads with a combined score of <strong>2144</strong>, followed closely by Bronx High School of Science and Staten Island Technical High School.
+          </p>
+
+          <button class="image-block js-preview" data-group="nyc-charts"
+            data-img="assets/NYC/top_10_schools.png"
+            data-title="Top 10 Schools by Total SAT"
+            data-desc="Top 10 ranked by total SAT score (Math + Reading + Writing).">
+            <img src="assets/NYC/top_10_schools.png" alt="Top 10 Schools by Total SAT"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+        </div>
+
+        <div class="dax-measure">
+          <h4 style="margin: 0 0 10px;">🗽 Borough Analysis</h4>
+          <p class="muted" style="margin: 0; line-height: 1.7;">
+            <strong>Manhattan</strong> shows the <strong>largest score variation</strong>, suggesting a mix of both elite and lower-performing schools.
+          </p>
+        </div>
+      </section>
+
+      <!-- STRUCTURE -->
+      <section class="project-steps">
+        <h3>⚙️ Project Structure</h3>
+        <pre style="margin: 0; padding: 12px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); overflow-x:auto;">
+<code>nyc-schools-analysis/
+├─ data/
+│ ├─ raw/
+│ │ └─ schools.csv
+│ └─ processed/
+├─ notebooks/
+│ └─ nyc_schools_analysis.ipynb
+├─ charts/
+│ └─ top_10_schools.png
+├─ src/
+│ └─ utils.py
+├─ environment.yml
+├─ README.md
+└─ report.html</code></pre>
+      </section>
+
+      <!-- TOOLS -->
+      <section class="project-steps">
+        <h3>🧠 Tools & Libraries</h3>
+        <ul class="list">
+          <li>Python 3.11</li>
+          <li>pandas</li>
+          <li>numpy</li>
+          <li>matplotlib</li>
+          <li>JupyterLab</li>
+        </ul>
+      </section>
+
+      <!-- Modal -->
+      <div class="modal" id="modal" aria-hidden="true">
+        <div class="modal__backdrop" data-close></div>
+        <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Preview">
+          <button class="modal__close" data-close aria-label="Close">✕</button>
+          <img class="modal__img" id="modalImg" alt="">
+          <div class="modal__body">
+            <h3 id="modalTitle"></h3>
+            <p class="muted" id="modalDesc"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© 2025 Bogdan Cenusa - All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blinkit - Analysis</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+</head>
+
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Back to portfolio home">
+        <div class="brand__title">Blinkit</div>
+        <div class="brand__subtitle">Sales and Operations Analysis</div>
+      </a>
+
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav__links" id="navLinks">
+        <a class="btn btn--ghost" href="index.html">Home</a>
+        <a href="#summary">Summary</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#workflow">Workflow</a>
+        <a class="btn btn--ghost" href="Projects/blinkit_analysis.zip" download>Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+    <div class="container">
+
+      <section class="project-description">
+        <p>
+          A decision-focused analysis built to surface key performance signals, patterns, and segments.
+          The goal is fast readability and actionable insights.
+        </p>
+      </section>
+
+      <section class="project-details" id="summary">
+        <h3>Project Summary</h3>
+        <ul>
+          <li><strong>Tools:</strong> Power BI - DAX - Power Query</li>
+          <li><strong>Focus:</strong> KPIs, segmentation, operational signals, trend patterns</li>
+          <li><strong>Deliverable:</strong> Report pages + downloadable ZIP</li>
+        </ul>
+        <div class="project-date">
+          <em>Download: <strong>Projects/blinkit_analysis.zip</strong></em>
+        </div>
+      </section>
+
+      <section class="project-steps" id="gallery">
+        <h3>Gallery</h3>
+        <p class="section-subtitle">Click any page to preview. Use Left and Right in preview.</p>
+
+        <div class="gallery">
+          <button class="image-block js-preview"
+            type="button"
+            data-group="blinkit-gallery"
+            data-img="assets/Blinkit/Page1.png"
+            data-title="Blinkit - Page 1"
+            data-desc="">
+            <img src="assets/Blinkit/Page1.png" alt="Blinkit page 1">
+          </button>
+
+          <button class="image-block js-preview"
+            type="button"
+            data-group="blinkit-gallery"
+            data-img="assets/Blinkit/Page2.png"
+            data-title="Blinkit - Page 2"
+            data-desc="">
+            <img src="assets/Blinkit/Page2.png" alt="Blinkit page 2">
+          </button>
+
+          <button class="image-block js-preview"
+            type="button"
+            data-group="blinkit-gallery"
+            data-img="assets/Blinkit/Page3.png"
+            data-title="Blinkit - Page 3"
+            data-desc="">
+            <img src="assets/Blinkit/Page3.png" alt="Blinkit page 3">
+          </button>
+        </div>
+      </section>
+
+      <section class="project-steps" id="workflow">
+        <h3>Workflow</h3>
+        <p class="section-subtitle">A clean build process focused on clarity and decisions.</p>
+
+        <div class="steps-grid">
+          <div class="step">
+            <h4>Ask</h4>
+            <p>Define KPIs and decision questions the report must answer.</p>
+          </div>
+          <div class="step">
+            <h4>Prepare</h4>
+            <p>Validate inputs, identify missing values and noisy fields.</p>
+          </div>
+          <div class="step">
+            <h4>Process</h4>
+            <p>Power Query transformations and a model that supports slicing.</p>
+          </div>
+          <div class="step">
+            <h4>Analyze</h4>
+            <p>Segment performance and surface patterns worth acting on.</p>
+          </div>
+          <div class="step">
+            <h4>Share</h4>
+            <p>Readable flow - KPIs - breakdowns - supporting visuals.</p>
+          </div>
+          <div class="step">
+            <h4>Act</h4>
+            <p>Convert findings into actions and monitoring signals.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Preview">
+      <button class="modal__close" data-close aria-label="Close">✕</button>
+      <button class="modal__nav modal__nav--prev" id="modalPrev" aria-label="Previous">←</button>
+      <button class="modal__nav modal__nav--next" id="modalNext" aria-label="Next">→</button>
+
+      <img class="modal__img" id="modalImg" alt="">
+      <div class="modal__body" id="modalBody">
+        <h3 id="modalTitle"></h3>
+        <p class="muted" id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© 2025 Bogdan Cenusa - All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

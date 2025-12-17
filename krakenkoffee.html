@@ -3,164 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kraken Koffee Sales Infographic</title>
+  <title>Kraken Koffee - Sales Infographic</title>
   <link rel="stylesheet" href="css/main.css" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon_blue.png">
 </head>
+
 <body>
-
   <!-- Navbar -->
-  <nav class="project-navbar">
-    <div class="project-nav-left">
-      <h1>Kraken Koffee</h1>
-      <p class="nav-subtitle">Sales Infographic</p>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Go to home">
+        <div class="brand__title">Kraken Koffee</div>
+        <div class="brand__subtitle">Sales Infographic (Power BI)</div>
+      </a>
+
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav__links" id="navLinks">
+        <a class="btn btn--ghost" href="index.html">Home</a>
+        <a href="#summary">Summary</a>
+        <a href="#gallery">Infographic</a>
+        <a href="#dax">DAX</a>
+        <a href="#workflow">Workflow</a>
+        <a class="btn btn--ghost" href="Projects/krakenkoffee.zip" download>⬇ Download</a>
+      </nav>
     </div>
+  </header>
 
-    <button class="burger" id="burger-toggle">☰</button>
+  <main class="page-wrapper">
+    <div class="container">
 
-    <div class="project-nav-right" id="navbar-links">
-      <a href="#summary">Project Summary</a>
-      <a href="#gallery">Infographic</a>
-      <a href="#dax">DAX Measures</a>
-      <a href="#workflow">Project Workflow</a>
-      <button class="btn btn-yellow" onclick="promptDownload('krakenkoffee')">⬇ Download Project</button>
-      <a href="index.html" class="btn small-btn">← Back</a>
-    </div>
-  </nav>
-  <div class="page-wrapper">
-  <!-- Container -->
-  <div class="container">
+      <section class="project-description">
+        <p>
+          A one-page infographic dashboard that summarizes sales performance for Kraken Koffee’s Florida locations.
+          The focus is on readability, strong hierarchy, and business-ready KPIs.
+        </p>
+      </section>
 
-    <!-- Description -->
-    <section class="project-description">
-      <p>This one-page infographic visualizes sales performance and trends for Kraken Koffee's Florida locations, combining key statistics with visually engaging insights.</p>
-    </section>
-
-    <!-- Project Summary -->
-    <section class="project-details" id="summary">
-      <h3>Project Summary</h3>
-      <ul>
-        <li><strong>Tools used:</strong> Power BI, DAX, Power Query</li>
-        <li><strong>Data source:</strong> Simulated transaction data from coffee shop sales</li>
-        <li><strong>Pages:</strong> Single-page infographic (Split for display)</li>
-        <li><strong>Main KPIs:</strong> Total Sales, Average Order Size, Best Sellers, Time of Day Revenue, Forecasted Sales</li>
-      </ul>
-      <div class="project-date">
-        <em>Worked on: April 20 – April 22, 2025</em>
-      </div>
-    </section>
-
-    <!-- Infographic Gallery -->
-    <div class="gallery kraken" id="gallery">
-        <div class="image-block">
-          <img src="assets/KrakenKoffee/Page1.png" alt="Infographic Part 1" onclick="openImage(this)">
+      <section class="project-details" id="summary">
+        <h3>Project Summary</h3>
+        <ul>
+          <li><strong>Goal:</strong> Provide a clear, single-page overview of sales performance and product trends.</li>
+          <li><strong>Tools:</strong> Power BI • DAX • Power Query</li>
+          <li><strong>Data:</strong> Simulated coffee shop transactions (stores, products, time-based sales)</li>
+          <li><strong>Deliverable:</strong> One-page infographic (split into 4 images for web display)</li>
+          <li><strong>Highlights:</strong> Total Sales, Average Order Size, Best Sellers, Time-of-Day Revenue, Forecast</li>
+        </ul>
+        <div class="project-date">
+          <em>Worked on: April 20 – April 22, 2025</em>
         </div>
-        <div class="image-block">
-          <img src="assets/KrakenKoffee/Page2.png" alt="Infographic Part 2" onclick="openImage(this)">
-        </div>
-        <div class="image-block">
-          <img src="assets/KrakenKoffee/Page3.png" alt="Infographic Part 3" onclick="openImage(this)">
-        </div>
-        <div class="image-block">
-          <img src="assets/KrakenKoffee/Page4.png" alt="Infographic Part 4" onclick="openImage(this)">
-        </div>
-      </div>
-      
+      </section>
 
-    <!-- Lightbox for Zoom -->
-    <div id="lightbox" class="lightbox" onclick="closeImage()">
-      <button class="lightbox-btn prev" onclick="event.stopPropagation(); showPrevImage();">←</button>
-      <img id="lightbox-img" src="" alt="Full image" />
-      <button class="lightbox-btn next" onclick="event.stopPropagation(); showNextImage();">→</button>
-    </div>
+      <section class="project-steps" id="gallery">
+        <h3>Infographic</h3>
+        <p class="section-subtitle">Click any panel to preview. Use ← / → in preview.</p>
 
-    <!-- DAX Section -->
-    <section class="dax-section" id="dax">
-        <h3>Some DAX Measures</h3>
+        <!-- IMPORTANT: images are NOT forced to stretch/crop -->
+        <div class="gallery">
+          <button class="image-block js-preview"
+            data-group="kraken-gallery"
+            data-img="assets/KrakenKoffee/Page1.png"
+            data-title="KrakenKoffee - Panel 1"
+            data-desc="Top-line KPIs and overview.">
+            <img src="assets/KrakenKoffee/Page1.png" alt="KrakenKoffee panel 1"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <button class="image-block js-preview"
+            data-group="kraken-gallery"
+            data-img="assets/KrakenKoffee/Page2.png"
+            data-title="KrakenKoffee - Panel 2"
+            data-desc="Sales by category and product performance.">
+            <img src="assets/KrakenKoffee/Page2.png" alt="KrakenKoffee panel 2"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <button class="image-block js-preview"
+            data-group="kraken-gallery"
+            data-img="assets/KrakenKoffee/Page3.png"
+            data-title="KrakenKoffee - Panel 3"
+            data-desc="Time-of-day insights and operational patterns.">
+            <img src="assets/KrakenKoffee/Page3.png" alt="KrakenKoffee panel 3"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <button class="image-block js-preview"
+            data-group="kraken-gallery"
+            data-img="assets/KrakenKoffee/Page4.png"
+            data-title="KrakenKoffee - Panel 4"
+            data-desc="Forecast and supporting details.">
+            <img src="assets/KrakenKoffee/Page4.png" alt="KrakenKoffee panel 4"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+        </div>
+      </section>
+
+      <section class="dax-section" id="dax">
+        <h3>Selected DAX Measures</h3>
 
         <div class="dax-measure">
-            <h4>Most Popular Seller</h4>
-            <pre><code>Most Popular Seller = CALCULATE(min(Product_Dim[product_detail]), filter(Product_Dim,
-                [Product Transactions Rank]=1))</code></pre>
+          <h4>Most Popular Seller</h4>
+          <pre><code>Most Popular Seller =
+CALCULATE(
+  MIN(Product_Dim[product_detail]),
+  FILTER(Product_Dim, [Product Transactions Rank] = 1)
+)</code></pre>
         </div>
 
         <div class="dax-measure">
           <h4>Product Sales Rank</h4>
-          <pre><code>Product Sales Rank = RANKX(ALLSELECTED(Product_Dim), [Total Sales],, DESC, Dense)</code></pre>
+          <pre><code>Product Sales Rank =
+RANKX(
+  ALLSELECTED(Product_Dim),
+  [Total Sales],
+  ,
+  DESC,
+  Dense
+)</code></pre>
         </div>
 
         <div class="dax-measure">
-            <h4>Max Average Order Size Marker</h4>
-            <pre><code>Max AOS Marker = SWITCH(TRUE(), [Average Order Size] = [MAx Avg Order Size (Hour)],
-                 [Average Order Size],BLANK())</code></pre>
-          </div>
-
-        <div class="dax-measure">
-        <h4>Product Category Rank</h4>
-        <pre><code>Product Category Rank = CALCULATE(RANKX(ALL(Product_Dim[product_type]), [Total Sales],,DESC, Dense),
-             ALL(Product_Dim[product_category]))</code></pre>
+          <h4>Max Average Order Size Marker</h4>
+          <pre><code>Max AOS Marker =
+SWITCH(
+  TRUE(),
+  [Average Order Size] = [Max Avg Order Size (Hour)],
+  [Average Order Size],
+  BLANK()
+)</code></pre>
         </div>
 
         <div class="dax-measure">
-            <h4>Bar Chart Label</h4>
-            <pre><code>Bar Chart Label (Product Category) = Format([Total Sales]/1000,"$###, ##0k") & " 
-                (" & FORMAT([% of Sales], "###, ##0.0%") & ")"</code></pre>
-            </div>
-
-        <div class="dax-measure">
-            <h4>Forecast</h4>
-            <pre><code>Forecast = CALCULATE(SUMX(VALUES('Forecast Date Table'[Date]), [Average Daily Sales Switch]), 
-                FILTER(ALLSELECTED('Forecast Date Table'[Date]), 'Forecast Date Table'[Date]
-                 <= MAX('Forecast Date Table'[Date])))</code></pre>
+          <h4>Forecast</h4>
+          <pre><code>Forecast =
+CALCULATE(
+  SUMX(
+    VALUES('Forecast Date Table'[Date]),
+    [Average Daily Sales Switch]
+  ),
+  FILTER(
+    ALLSELECTED('Forecast Date Table'[Date]),
+    'Forecast Date Table'[Date] <= MAX('Forecast Date Table'[Date])
+  )
+)</code></pre>
         </div>
-      
-        <p class="dax-note">These measures leverage DAX techniques including <em>CALCULATE</em>, <em>FILTER</em> and <em>RANKX</em> to generate dynamic and actionable insights.</p>
+
+        <p class="dax-note">
+          These measures use common DAX patterns like <em>CALCULATE</em>, <em>FILTER</em>, and <em>RANKX</em>
+          to support dynamic insights and reporting.
+        </p>
       </section>
-      
 
-    <!-- Workflow -->
-    <section class="project-steps" id="workflow">
-      <h3>Project Workflow</h3>
-      <p class="section-subtitle">Inspired by Google Data Analytics methodology</p>
-      <div class="steps-grid">
-        <div class="step">
-          <h4>🟢 Ask</h4>
-          <p>The goal was to create an easy-to-read infographic summarizing sales data, product performance, and sales patterns for Kraken Koffee's Florida stores.</p>
-        </div>
-        <div class="step">
-          <h4>🧹 Prepare</h4>
-          <p>Sales data was cleaned and filtered using Power Query, ensuring consistency and accuracy in transactions and product details.</p>
-        </div>
-        <div class="step">
-          <h4>🔧 Process</h4>
-          <p>Key metrics and measures were developed using DAX, focusing on dynamic calculations for forecasting and best seller analysis.</p>
-        </div>
-        <div class="step">
-          <h4>📊 Analyze</h4>
-          <p>Trends in order size, time of day sales, and top products were identified to provide actionable business insights.</p>
-        </div>
-        <div class="step">
-          <h4>📤 Share</h4>
-          <p>The infographic was designed to be visually appealing and informative, allowing stakeholders to quickly grasp key performance metrics.</p>
-        </div>
-        <div class="step">
-          <h4>🧠 Act</h4>
-          <p>Insights can help optimize store hours, focus marketing on top products, and adjust goals based on forecasted trends.</p>
-        </div>
-      </div>
-    </section>
+      <section class="project-steps" id="workflow">
+        <h3>Project Workflow</h3>
+        <p class="section-subtitle">Inspired by the Google Data Analytics process</p>
 
-    <!-- Buttons -->
-    <div class="button-group">
-      <a href="index.html" class="btn">← Back to Portfolio</a>
-      <button class="btn btn-yellow" onclick="promptDownload('krakenkoffee')">⬇ Download Project</button>
+        <div class="steps-grid">
+          <div class="step">
+            <h4>🟢 Ask</h4>
+            <p>Define business questions and KPIs that fit a single-page infographic format.</p>
+          </div>
+          <div class="step">
+            <h4>🧹 Prepare</h4>
+            <p>Clean and validate transactions in Power Query, ensuring consistent store, time, and product fields.</p>
+          </div>
+          <div class="step">
+            <h4>🔧 Process</h4>
+            <p>Build the model and create DAX measures for ranking, share-of-sales, and forecast logic.</p>
+          </div>
+          <div class="step">
+            <h4>📊 Analyze</h4>
+            <p>Identify best sellers, time-of-day patterns, and segments driving revenue across locations.</p>
+          </div>
+          <div class="step">
+            <h4>📤 Share</h4>
+            <p>Design a high-readability infographic with clear hierarchy: KPIs → breakdowns → context.</p>
+          </div>
+          <div class="step">
+            <h4>🧠 Act</h4>
+            <p>Use insights to optimize product focus, staffing by time-of-day, and growth based on forecast trends.</p>
+          </div>
+        </div>
+      </section>
     </div>
+  </main>
 
+  <!-- Modal (shared) -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Preview">
+      <button class="modal__close" data-close aria-label="Close">✕</button>
+      <button class="modal__nav modal__nav--prev" id="modalPrev" aria-label="Previous">←</button>
+      <button class="modal__nav modal__nav--next" id="modalNext" aria-label="Next">→</button>
+
+      <div class="modal__media">
+        <img class="modal__img" id="modalImg" alt="">
+      </div>
+
+      <div class="modal__body">
+        <h3 id="modalTitle"></h3>
+        <p class="muted" id="modalDesc"></p>
+      </div>
+    </div>
   </div>
-</div>
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Cenusa Bogdan — All rights reserved.
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© 2025 Bogdan Cenusa - All rights reserved.</span>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>

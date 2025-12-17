@@ -3,146 +3,158 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MarketMindz Market Research</title>
+  <title>MarketMindz - Market Research</title>
   <link rel="stylesheet" href="css/main.css" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon_blue.png">
 </head>
+
 <body>
-    <nav class="project-navbar">
-      <div class="project-nav-left">
-        <h1>MarketMindz</h1>
-        <p class="nav-subtitle">Market Research</p>
-      </div>
-    
-      <button class="burger" id="burger-toggle">☰</button>
-    
-      <div class="project-nav-right" id="navbar-links">
-        <a href="#summary">Project Summary</a>
+  <!-- Navbar -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Go to home">
+        <div class="brand__title">MarketMindz</div>
+        <div class="brand__subtitle">Market Research (Power BI)</div>
+      </a>
+
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav__links" id="navLinks">
+        <a class="btn btn--ghost" href="index.html">Home</a>
+        <a href="#summary">Summary</a>
         <a href="#gallery">Gallery</a>
-        <a href="#workflow">Project Workflow</a>
-        <button class="btn btn-yellow" onclick="promptDownload('marketmindz')">⬇ Download Project</button>
-        <a href="index.html" class="btn small-btn">← Back</a>
-      </div>
-    </nav>
-    
+        <a href="#workflow">Workflow</a>
+        <a class="btn btn--ghost" href="Projects/marketmindz.zip" download>⬇ Download</a>
+      </nav>
+    </div>
+  </header>
 
-  <div class="container">
+  <main class="page-wrapper">
+    <div class="container">
 
-    <!-- Description -->
-    <section class="project-description">
-      <p> The primary focus of this dashboard is to answer a few specific business questions raised by the client, using fictional or embellished datasets tailored to meet educational goals.</p>
-    </section>
+      <section class="project-description">
+        <p>
+          A decision-focused dashboard built to answer clear business questions around campaign performance,
+          product sales, customer profiles, and purchase drivers using a simulated dataset.
+        </p>
+      </section>
 
-    <!-- Project Details -->
-    <section class="project-details" id="summary">
-
+      <section class="project-details" id="summary">
         <h3>Project Summary</h3>
         <ul>
-          <li><strong>Tools used:</strong> Power BI, Power Query</li>
-          <li><strong>Data source:</strong> Simulated sales & marketing data from a retail business</li>
+          <li><strong>Tools:</strong> Power BI • Power Query</li>
+          <li><strong>Data:</strong> Simulated sales & marketing data (educational dataset)</li>
           <li><strong>Pages:</strong> Campaign Performance, Buyer Composition, Purchase Drivers</li>
-          <li><strong>Main KPIs:</strong> Sales per Product Category, Purchases per Campaign, Customer Count, Average Income, Discounts Purchased, and Purchase Channel Distribution</li>
+          <li><strong>Main KPIs:</strong> Sales per Category, Purchases per Campaign, Customer Count, Avg. Income, Discounts, Purchase Channel</li>
         </ul>
-      
-        <h4 style="margin-top: 2rem;">Questions</h4>
-        <ul id="questions-list">
-          <li>1. How are our 6 recent marketing campaigns performing?</li>
-          <li>2. How are our products performing?</li>
-          <li>3. Who are our customers?</li>
-          <li>4. What is driving campaign performance and buyer decision-making?</li>
+
+        <h4 style="margin-top: 18px;">Key Questions</h4>
+        <ul>
+          <li>How are our 6 recent marketing campaigns performing?</li>
+          <li>How are our products performing?</li>
+          <li>Who are our customers?</li>
+          <li>What drives campaign performance and buyer decisions?</li>
         </ul>
+
         <div class="project-date">
           <em>Worked on: April 16 – April 18, 2025</em>
         </div>
-        
       </section>
-      
-      
 
-    <!-- Gallery -->
-    <div class="gallery" id="gallery">
+      <section class="project-steps" id="gallery">
+        <h3>Gallery</h3>
+        <p class="section-subtitle">Click any page to preview. Use ← / → in preview.</p>
 
+        <div class="gallery">
+          <button class="image-block js-preview"
+            data-group="market-gallery"
+            data-img="assets/MarketMindz/Page1.png"
+            data-title="MarketMindz - Campaign Performance"
+            data-desc="Campaign KPIs, performance comparisons and trends.">
+            <img src="assets/MarketMindz/Page1.png" alt="MarketMindz page 1"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
 
-        <div class="image-block">
-          <img src="assets/MarketMindz/Page1.png" alt="Page 1 - Campaigns Performance" onclick="openImage(this)">
-          <p class="image-caption">Campaigns Performance</p>
+          <button class="image-block js-preview"
+            data-group="market-gallery"
+            data-img="assets/MarketMindz/Page2.png"
+            data-title="MarketMindz - Buyer Composition"
+            data-desc="Customer segmentation and buyer composition.">
+            <img src="assets/MarketMindz/Page2.png" alt="MarketMindz page 2"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <button class="image-block js-preview"
+            data-group="market-gallery"
+            data-img="assets/MarketMindz/Page3.png"
+            data-title="MarketMindz - Purchase Drivers"
+            data-desc="Drivers of purchasing behavior and channel distribution.">
+            <img src="assets/MarketMindz/Page3.png" alt="MarketMindz page 3"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
         </div>
-      
-        <div class="image-block">
-          <img src="assets/MarketMindz/Page2.png" alt="Page 2 - Buyer Composition" onclick="openImage(this)">
-          <p class="image-caption">Buyer Composition</p>
-        </div>
-      
-        <div class="image-block">
-          <img src="assets/MarketMindz/Page3.png" alt="Page 3 - Purchase Drivers" onclick="openImage(this)">
-          <p class="image-caption">Purchase Drivers</p>
-        </div>
-      
-      </div>
-      
-      <div id="lightbox" class="lightbox" onclick="closeImage()">
-        <button class="lightbox-btn prev" onclick="event.stopPropagation(); showPrevImage();">←</button>
-        <img id="lightbox-img" src="" alt="Full image" />
-        <button class="lightbox-btn next" onclick="event.stopPropagation(); showNextImage();">→</button>
-      </div>
-      
+      </section>
 
       <section class="project-steps" id="workflow">
-
         <h3>Project Workflow</h3>
-        <p class="section-subtitle">Learned from Google Data Analytics course</p>
+        <p class="section-subtitle">Based on the Google Data Analytics process</p>
+
         <div class="steps-grid">
-      
           <div class="step">
             <h4>🟢 Ask</h4>
-            <p>The business problem was already defined through clear questions provided in the initial brief, focused on campaign results, customer behavior, and product performance.</p>
+            <p>Start from a clear set of business questions focused on campaigns, customers, and product performance.</p>
           </div>
-      
           <div class="step">
             <h4>🧹 Prepare</h4>
-            <p>I explored and validated the dataset, ensuring it was suitable for analysis. I reviewed sales, customer, and marketing data before loading it into Power BI.</p>
+            <p>Explore and validate the dataset to ensure it’s usable and consistent for analysis.</p>
           </div>
-      
           <div class="step">
             <h4>🔧 Process</h4>
-            <p>I cleaned and transformed the data using Power Query. I created referenced dimension tables for Campaigns, Platforms, and Products to optimize report structure and usability.</p>
+            <p>Clean and transform data in Power Query, building dimension tables for better structure.</p>
           </div>
-      
           <div class="step">
             <h4>📊 Analyze</h4>
-            <p>With the cleaned dataset, I built the dashboard using KPIs and charts that answered the business questions and highlight actionable insights.</p>
+            <p>Build visuals that answer each question with actionable KPIs and comparisons.</p>
           </div>
-      
           <div class="step">
             <h4>📤 Share</h4>
-            <p>I structured the report to be clean and interactive using slicers, filters, and clear navigation. The final result was easy to interpret and presentation-ready.</p>
+            <p>Ship a clean and interactive report using slicers, filters, and clear layout hierarchy.</p>
           </div>
-      
           <div class="step">
             <h4>🧠 Act</h4>
-            <p>The dashboard supports decision-making by providing a clear overview of customer profiles, product trends, and campaign effectiveness.</p>
+            <p>Use insights to optimize campaigns, focus on top segments, and improve product performance decisions.</p>
           </div>
-      
         </div>
       </section>
-      
-      
-      
-      
-      <div class="button-group">
-        <a href="index.html" class="btn">← Back to Portfolio</a>
-        <button class="btn btn-yellow" onclick="promptDownload('marketmindz')">⬇ Download Project</button>
+    </div>
+  </main>
 
+  <!-- Modal (shared) -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Preview">
+      <button class="modal__close" data-close aria-label="Close">✕</button>
+      <button class="modal__nav modal__nav--prev" id="modalPrev" aria-label="Previous">←</button>
+      <button class="modal__nav modal__nav--next" id="modalNext" aria-label="Next">→</button>
+
+      <div class="modal__media">
+        <img class="modal__img" id="modalImg" alt="">
       </div>
-      
-      
-      
 
+      <div class="modal__body">
+        <h3 id="modalTitle"></h3>
+        <p class="muted" id="modalDesc"></p>
+      </div>
+    </div>
   </div>
 
-  <footer>
-    &copy; 2025 Cenusa Bogdan — All rights reserved.
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© 2025 Bogdan Cenusa - All rights reserved.</span>
+    </div>
   </footer>
+
   <script src="js/main.js"></script>
 </body>
 </html>

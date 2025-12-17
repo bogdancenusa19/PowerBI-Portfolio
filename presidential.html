@@ -3,96 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Romanian Presidential Elections Analysis</title>
+  <title>Romanian Presidential Elections - First Round</title>
   <link rel="stylesheet" href="css/main.css" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon_blue.png">
 </head>
+
 <body>
-
   <!-- Navbar -->
-  <nav class="project-navbar">
-    <div class="project-nav-left">
-      <h1>Presidential Elections</h1>
-      <p class="nav-subtitle"> First Round Insights</p>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Go to home">
+        <div class="brand__title">Presidential Elections</div>
+        <div class="brand__subtitle">First Round Insights (Power BI)</div>
+      </a>
+
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav__links" id="navLinks">
+        <a class="btn btn--ghost" href="index.html">Home</a>
+        <a href="#summary">Summary</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#dax">DAX</a>
+        <a href="#workflow">Workflow</a>
+        <a class="btn btn--ghost" href="Projects/presidential.zip" download>⬇ Download</a>
+      </nav>
     </div>
+  </header>
 
-    <button class="burger" id="burger-toggle">☰</button>
+  <main class="page-wrapper">
+    <div class="container">
 
-    <div class="project-nav-right" id="navbar-links">
-      <a href="#summary">Project Summary</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#dax">DAX Measures</a>
-      <a href="#workflow">Project Workflow</a>
-      <button class="btn btn-yellow" onclick="promptDownload('presidential')">⬇ Download Project</button>
-      <a href="index.html" class="btn small-btn">← Back</a>
-    </div>
-  </nav>
-  <div class="page-wrapper">
-  <!-- Container -->
-  <div class="container">
+      <section class="project-description">
+        <p>
+          An interactive Power BI report analyzing Romania’s first-round presidential election results:
+          turnout, vote distribution, candidate performance, and comparisons between Romania and abroad.
+        </p>
+      </section>
 
-    <!-- Description -->
-    <section class="project-description">
-      <p>This interactive data report offers a three-page visualization of Romania's first-round presidential election results, showcasing candidates, votes distribution, and regional insights through engaging and dynamic dashboards.</p>
-    </section>
-
-    <!-- Project Summary -->
-    <section class="project-details" id="summary">
+      <section class="project-details" id="summary">
         <h3>Project Summary</h3>
         <ul>
-        <li><strong>Tools used:</strong> Power BI, DAX, Power Query</li>
-          <li style="display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <strong>Data source:</strong> prezenta.roaep.ro
-            </div>
-            <div class="data-source-buttons">
-              <a href="https://prezenta.roaep.ro/prezidentiale04052025/pv/romania/results/" target="_blank" class="btn small-btn">Go to Source</a>
-              <a href="assets/Presidential/datasource.csv" download class="btn btn-yellow small-btn">Download CSV</a>
-            </div>
+          <li><strong>Tools:</strong> Power BI • DAX • Power Query</li>
+          <li>
+            <strong>Data source:</strong> prezenta.roaep.ro
+            <span class="muted"> (official public results)</span>
           </li>
           <li><strong>Pages:</strong> Overview, Candidates, Romania vs Abroad</li>
-          <li><strong>Main KPIs:</strong> Total Votes, Total Candidates, Total Precincts, Average Votes per Precinct, Average Report Hour</li>
+          <li><strong>Main KPIs:</strong> Total Votes, Total Candidates, Total Precincts, Avg Votes/Precinct, Avg Report Hour</li>
         </ul>
+
         <div class="project-date">
           <em>Worked on: May 10, 2025</em>
         </div>
       </section>
-      
 
-    <!-- Infographic Gallery -->
-    <div class="gallery" id="gallery">
-        <div class="image-block">
-          <img src="assets/Presidential/presidential1.png" alt="Infographic Part 1" onclick="openImage(this)">
-        </div>
-        <div class="image-block">
-          <img src="assets/Presidential/presidential2.png" alt="Infographic Part 2" onclick="openImage(this)">
-        </div>
-        <div class="image-block">
-          <img src="assets/Presidential/presidential3.png" alt="Infographic Part 3" onclick="openImage(this)">
-        </div>
-        <div class="image-block">
-            <img src="assets/Presidential/star_schema.png" alt="Infographic Part 3" onclick="openImage(this)">
-        </div>
-        <div class="image-block">
-            <img src="assets/Presidential/tables.png" alt="Infographic Part 3" onclick="openImage(this)">
-        </div>
-      </div>
-      
+      <section class="project-steps" id="gallery">
+        <h3>Gallery</h3>
+        <p class="section-subtitle">Click any image to preview. Different sizes are kept natural (no forced zoom/crop).</p>
 
-    <!-- Lightbox for Zoom -->
-    <div id="lightbox" class="lightbox" onclick="closeImage()">
-      <button class="lightbox-btn prev" onclick="event.stopPropagation(); showPrevImage();">←</button>
-      <img id="lightbox-img" src="" alt="Full image" />
-      <button class="lightbox-btn next" onclick="event.stopPropagation(); showNextImage();">→</button>
-    </div>
+        <div class="gallery">
+          <!-- Main report pages -->
+          <button class="image-block js-preview"
+            data-group="pres-gallery"
+            data-img="assets/Presidential/presidential1.png"
+            data-title="Overview"
+            data-desc="Turnout, totals, and key comparisons.">
+            <img src="assets/Presidential/presidential1.png" alt="Presidential page 1"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
 
-    <!-- DAX Section -->
-    <section class="dax-section" id="dax">
-        <h3>Some DAX Measures</h3>
+          <button class="image-block js-preview"
+            data-group="pres-gallery"
+            data-img="assets/Presidential/presidential2.png"
+            data-title="Candidates"
+            data-desc="Candidate performance and breakdowns.">
+            <img src="assets/Presidential/presidential2.png" alt="Presidential page 2"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <button class="image-block js-preview"
+            data-group="pres-gallery"
+            data-img="assets/Presidential/presidential3.png"
+            data-title="Romania vs Abroad"
+            data-desc="Comparisons between domestic and abroad voting patterns.">
+            <img src="assets/Presidential/presidential3.png" alt="Presidential page 3"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <!-- Extra documentation images (may be smaller) -->
+          <button class="image-block js-preview"
+            data-group="pres-gallery"
+            data-img="assets/Presidential/star_schema.png"
+            data-title="Star Schema"
+            data-desc="Data model overview (fact + dimensions).">
+            <img src="assets/Presidential/star_schema.png" alt="Star schema"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <button class="image-block js-preview"
+            data-group="pres-gallery"
+            data-img="assets/Presidential/tables.png"
+            data-title="Tables"
+            data-desc="Key tables used in the model.">
+            <img src="assets/Presidential/tables.png" alt="Tables"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+        </div>
+      </section>
+
+      <section class="dax-section" id="dax">
+        <h3>Selected DAX Measures</h3>
 
         <div class="dax-measure">
-            <h4>Total Votes</h4>
-            <pre><code>Total Votes = SUM(Votes[Votes])</code></pre>
+          <h4>Total Votes</h4>
+          <pre><code>Total Votes = SUM(Votes[Votes])</code></pre>
         </div>
 
         <div class="dax-measure">
@@ -101,73 +125,80 @@
         </div>
 
         <div class="dax-measure">
-            <h4>Total Votes per County</h4>
-            <pre><code>Total Votes per County = CALCULATE([Total Votes], ALLEXCEPT(Votes, County[County_id]))</code></pre>
-          </div>
-
-        <div class="dax-measure">
-        <h4>Total Votes per Candidate</h4>
-        <pre><code>Total Votes per Candidate = CALCULATE([Total Votes], ALLEXCEPT(Votes, Candidates[Candidate_id]))</code></pre>
+          <h4>Total Votes per County</h4>
+          <pre><code>Total Votes per County =
+CALCULATE([Total Votes], ALLEXCEPT(Votes, County[County_id]))</code></pre>
         </div>
 
         <div class="dax-measure">
-            <h4>Average Report Hour of Votes</h4>
-            <pre><code>Average Report Hour of Votes = AVERAGE(Votes[Submission Hour])</code></pre>
-            </div>
+          <h4>Candidate Rank</h4>
+          <pre><code>Candidate Rank =
+RANKX(ALL(Candidates[Candidate_id]), [Total Votes],, DESC, Dense)</code></pre>
+        </div>
 
-        <div class="dax-measure">
-            <h4>Candidate Rank</h4>
-            <pre><code>Candidate Rank = RANKX(ALL(Candidates[Candidate_id]), [Total Votes],, DESC, Dense)</code></pre>
-            </div>
-    
-        <p class="dax-note">These measures leverage DAX techniques including <em>CALCULATE</em>, <em>FILTER</em> and <em>RANKX</em> to generate dynamic and actionable insights.</p>
+        <p class="dax-note">
+          These measures use common DAX patterns to power interactive reporting and ranking logic.
+        </p>
       </section>
-      
 
-    <!-- Workflow -->
-    <section class="project-steps" id="workflow">
+      <section class="project-steps" id="workflow">
         <h3>Project Workflow</h3>
         <p class="section-subtitle">Inspired by Google Data Analytics methodology</p>
+
         <div class="steps-grid">
           <div class="step">
             <h4>🟢 Ask</h4>
-            <p>The goal was to build a comprehensive data model and analysis of Romania's first-round presidential elections, transforming raw voting data into clear, actionable insights.</p>
+            <p>Turn raw voting data into clear insights about turnout, candidate performance, and regions.</p>
           </div>
           <div class="step">
             <h4>🧹 Prepare</h4>
-            <p>Starting from a single CSV file, I cleaned the data, removed redundancies, and structured it into FACT and DIMENSION tables to enable a star schema design.</p>
+            <p>Start from the source dataset and validate fields, duplicates, and structure for modeling.</p>
           </div>
           <div class="step">
             <h4>🔧 Process</h4>
-            <p>Key metrics and measures were created using DAX, ensuring dynamic calculations for total votes, candidate rankings, and dominant regions per candidate.</p>
+            <p>Build a star schema (fact + dimensions) and create DAX measures for key KPIs and rankings.</p>
           </div>
           <div class="step">
             <h4>📊 Analyze</h4>
-            <p>Vote distribution was explored across counties, identifying voting patterns and top-performing candidates at different geographic levels.</p>
+            <p>Explore distribution across counties and identify patterns and top performers.</p>
           </div>
           <div class="step">
             <h4>📤 Share</h4>
-            <p>The insights were presented across three interactive report pages, combining KPIs, comparative visuals, and drill-down exploration for stakeholders.</p>
+            <p>Deliver a 3-page interactive report designed for stakeholder exploration and quick understanding.</p>
           </div>
           <div class="step">
             <h4>🧠 Act</h4>
-            <p>These findings provide an accessible way to understand voting trends, supporting deeper analysis of voter behavior and regional dynamics.</p>
+            <p>Enable deeper follow-up analysis and comparisons between regions and voter groups.</p>
           </div>
         </div>
       </section>
-      
-
-    <!-- Buttons -->
-    <div class="button-group">
-      <a href="index.html" class="btn">← Back to Portfolio</a>
-      <button class="btn btn-yellow" onclick="promptDownload('presidential')">⬇ Download Project</button>
     </div>
+  </main>
 
+  <!-- Modal (shared) -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Preview">
+      <button class="modal__close" data-close aria-label="Close">✕</button>
+      <button class="modal__nav modal__nav--prev" id="modalPrev" aria-label="Previous">←</button>
+      <button class="modal__nav modal__nav--next" id="modalNext" aria-label="Next">→</button>
+
+      <div class="modal__media">
+        <img class="modal__img" id="modalImg" alt="">
+      </div>
+
+      <div class="modal__body">
+        <h3 id="modalTitle"></h3>
+        <p class="muted" id="modalDesc"></p>
+      </div>
+    </div>
   </div>
-</div>
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Cenusa Bogdan — All rights reserved.
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© 2025 Bogdan Cenusa - All rights reserved.</span>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>

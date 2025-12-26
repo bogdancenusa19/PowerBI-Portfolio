@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UiPath - Invoice Classifier and Mailer</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Back to portfolio home">
+        <div class="brand__title">UiPath Invoice Filter</div>
+        <div class="brand__subtitle">Classify text files and email invoices</div>
+      </a>
+
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav__links" id="navLinks">
+        <a class="btn btn--ghost" href="index.html">⌂ Home</a>
+        <a href="#summary">Summary</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#workflow">Workflow</a>
+        <a class="btn btn--ghost" href="Projects/uipath_invoice_classifier.zip" download>⬇ Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+    <div class="container">
+
+      <!-- Description -->
+      <section class="project-description">
+        <p>
+          A small back office helper built in UiPath Studio that scans a folder of text files,
+          classifies them based on content, and automatically emails only the invoices to a chosen recipient.
+          It removes manual triage work and makes sure no invoice is missed.
+        </p>
+      </section>
+
+      <!-- Summary -->
+      <section class="project-details" id="summary">
+        <h3>Project Summary</h3>
+        <ul>
+          <li><strong>Goal:</strong> Automate invoice detection in text files and forward them by email to a selected address.</li>
+          <li><strong>Tools:</strong> UiPath Studio - File System activities - String operations - SMTP Mail.</li>
+          <li><strong>Inputs:</strong> Local folder path and recipient email address typed by the user.</li>
+          <li><strong>Logic:</strong> Loop through each .txt file, read content, check for the keyword <code>"Invoice"</code>, then send matching files as attachments.</li>
+          <li><strong>Outputs:</strong> Only invoice files are emailed and each decision is logged for traceability.</li>
+        </ul>
+        <div class="project-date">
+          <em>Scope - practice project for UiPath and simple text based classification.</em>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section class="project-steps" id="gallery">
+        <h3>Gallery</h3>
+        <p class="section-subtitle">
+          Click any step to preview the workflow. Use ← and → in the preview to move between images.
+        </p>
+
+        <div class="gallery">
+          <button class="image-block js-preview"
+            data-group="uipath-gallery"
+            data-img="assets/UiPath/uipath1.png"
+            data-title="High level workflow"
+            data-desc="The main workflow - select folder, read files, classify invoices, send emails and log decisions.">
+            <img src="assets/UiPath/uipath1.png" alt="UiPath workflow overview"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <button class="image-block js-preview"
+            data-group="uipath-gallery"
+            data-img="assets/UiPath/uipath2.png"
+            data-title="Folder selection and email input"
+            data-desc="Browse For Folder, log the choice, then prompt the user for the invoice recipient email address.">
+            <img src="assets/UiPath/uipath2.png" alt="UiPath folder selection and input dialog"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <button class="image-block js-preview"
+            data-group="uipath-gallery"
+            data-img="assets/UiPath/uipath3.png"
+            data-title="Loop through text files"
+            data-desc="For Each File in Folder, read the text content and decide if the file is an invoice based on the keyword check.">
+            <img src="assets/UiPath/uipath3.png" alt="UiPath loop through text files"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <button class="image-block js-preview"
+            data-group="uipath-gallery"
+            data-img="assets/UiPath/uipath4.png"
+            data-title="Email invoice and log"
+            data-desc="If the file is an invoice, create an attachment resource, send SMTP email and write a log line for observability.">
+            <img src="assets/UiPath/uipath4.png" alt="UiPath SMTP email block"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+
+          <button class="image-block js-preview"
+            data-group="uipath-gallery"
+            data-img="assets/UiPath/uipath_output.png"
+            data-title="Result in inbox"
+            data-desc="Final result - only invoice files arrive in the mailbox, one email per invoice, with clear subjects and attachments.">
+            <img src="assets/UiPath/uipath_output.png" alt="Gmail inbox with invoices received"
+              style="width:auto; max-width:100%; height:auto; margin:0 auto; display:block;">
+          </button>
+        </div>
+      </section>
+
+      <!-- Workflow explanation -->
+      <section class="project-steps" id="workflow">
+        <h3>Workflow</h3>
+        <p class="section-subtitle">
+          A simple but realistic automation that could sit next to any small accounting process.
+        </p>
+
+        <div class="steps-grid">
+          <div class="step">
+            <h4>🟢 Ask - what should be automated</h4>
+            <p>
+              The target scenario was an employee who regularly receives text files in a shared folder and has to manually identify which ones are invoices and forward them by email.
+            </p>
+          </div>
+
+          <div class="step">
+            <h4>🧹 Prepare - inputs and rules</h4>
+            <p>
+              Define input parameters - folder path and recipient email - and a simple classification rule based on
+              the presence of the keyword "Invoice" in the file content.
+            </p>
+          </div>
+
+          <div class="step">
+            <h4>🔧 Build - UiPath workflow</h4>
+            <p>
+              Use Browse For Folder to select the directory, then For Each File in Folder filtered by <code>*.txt</code>.
+              Read Text File for each item, evaluate the condition, and branch into email or ignore path.
+            </p>
+          </div>
+
+          <div class="step">
+            <h4>📊 Decide - invoice or not</h4>
+            <p>
+              If <code>FileOutput.Contains("Invoice")</code> is true, the file is treated as an invoice.
+              Log messages tag each file as "Emailing invoice" or "Ignoring receipt" so runs are easy to audit.
+            </p>
+          </div>
+
+          <div class="step">
+            <h4>📤 Share - send by email</h4>
+            <p>
+              Use SMTP Mail with a dynamic subject built from the file name and attach the current file
+              through a file resource. This mirrors how a human would attach and send each invoice.
+            </p>
+          </div>
+
+          <div class="step">
+            <h4>🧠 Extend - next ideas</h4>
+            <p>
+              The same pattern can be extended with stronger text classification rules, attachment formats other than txt,
+              or integration with an RPA queue to track which invoices were processed.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Shared modal for previews -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Preview">
+      <button class="modal__close" data-close aria-label="Close">✕</button>
+      <button class="modal__nav modal__nav--prev" id="modalPrev" aria-label="Previous">←</button>
+      <button class="modal__nav modal__nav--next" id="modalNext" aria-label="Next">→</button>
+
+      <img class="modal__img" id="modalImg" alt="">
+      <div class="modal__body" id="modalBody">
+        <h3 id="modalTitle"></h3>
+        <p class="muted" id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© 2025 Bogdan Cenusa - All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
